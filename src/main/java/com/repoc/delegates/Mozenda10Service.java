@@ -1,4 +1,4 @@
-package com.repoc.web;
+package com.repoc.delegates;
 
 import com.repoc.client.*;
 import lombok.extern.slf4j.Slf4j;
@@ -17,6 +17,12 @@ public class Mozenda10Service {
     @Autowired
     Mozenda10Client client;
 
+    @Autowired
+    FirmsRepository firmsRepository;
+
+    @Autowired
+    ProfilesRepository profilesRepository;
+
     public void retrieveLawyers() throws Exception {
         Mozenda10CollectionXML collectionXML = client.getCollectionXML();
 
@@ -25,7 +31,8 @@ public class Mozenda10Service {
         int pageNumber = 1;
         int pageCount = 0;
         for(Mozenda10Collection collection: collections) {
-            log.info("processing element with view Id: " + collection.getDefaultViewId());
+            log.info("processing collection with view Id: " + collection.getDefaultViewId());
+            processCollection(collection);
             do {
                 Mozenda10ItemXML itemsXML = client.getItems(collection.getDefaultViewId(), pageNumber);
                 if (itemsXML == null) {
@@ -37,14 +44,25 @@ public class Mozenda10Service {
                     continue;
                 }
                 itemsXML.getItemList().stream().forEach(item -> {
-                    processLawyers(item);
+                    processItem(item, collection.getCollectionId());
                 });
             } while (pageNumber < pageCount);
 
         }
     }
 
-    private void processLawyers(Mozenda10Item item) {
+    private void processCollection(Mozenda10Collection collection) {
+        log.info("saving a firm (id: " + collection.getCollectionId() + ")");
+        firmsRepository.save(collection);
+    }
+
+    private void processItem(Mozenda10Item item, int collectionId) {
+        item.setFirmId(collectionId);
+        log.info("saving a profile (id: " + item.getItemId() + ", firmId: " + collectionId + ")");
+        profilesRepository.save(item);
+    }
+
+    private void printItem(Mozenda10Item item){
         StringBuffer buf = new StringBuffer("Lawyer:\n");
         buf.append("itemId: "+ item.getItemId() + "\n");
         buf.append("locationUrl: "+ item.getLocationUrl() + "\n");
@@ -57,5 +75,6 @@ public class Mozenda10Service {
 
         log.info(buf.toString());
     }
+
 
 }

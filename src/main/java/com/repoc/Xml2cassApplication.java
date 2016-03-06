@@ -1,6 +1,6 @@
 package com.repoc;
 
-import com.repoc.web.Mozenda10Service;
+import com.repoc.delegates.Mozenda10Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;

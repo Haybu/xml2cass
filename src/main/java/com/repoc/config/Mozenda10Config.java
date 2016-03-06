@@ -2,11 +2,9 @@ package com.repoc.config;
 
 import com.repoc.client.Mozenda10Converter;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.ClassPathResource;
-import org.springframework.core.io.DefaultResourceLoader;
 import org.springframework.core.io.Resource;
 import org.springframework.oxm.castor.CastorMarshaller;
 import org.springframework.web.client.RestTemplate;

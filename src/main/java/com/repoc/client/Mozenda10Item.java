@@ -1,15 +1,28 @@
 package com.repoc.client;
 
 import lombok.Data;
+import org.springframework.cassandra.core.Ordering;
+import org.springframework.cassandra.core.PrimaryKeyType;
+import org.springframework.data.cassandra.mapping.Column;
+import org.springframework.data.cassandra.mapping.PrimaryKey;
+import org.springframework.data.cassandra.mapping.PrimaryKeyColumn;
+import org.springframework.data.cassandra.mapping.Table;
 
 import java.util.Date;
 
 /**
  * Created by hmohamed on 3/6/16.
  */
+@Table("profiles")
 @Data
 public class Mozenda10Item {
+
+    @PrimaryKeyColumn(name = "profileId", ordinal = 0, type = PrimaryKeyType.PARTITIONED)
     private int itemId;
+
+    @PrimaryKeyColumn(name = "firmId", ordinal = 1, type = PrimaryKeyType.CLUSTERED, ordering = Ordering.DESCENDING)
+    private int firmId;
+
     private String locationUrl;
     private String name;
     private String nameOrder;
