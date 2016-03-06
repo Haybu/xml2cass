@@ -1,0 +1,69 @@
+<?xml version="1.0"?>
+<!DOCTYPE mapping PUBLIC "-//EXOLAB/Castor Object Mapping DTD Version 1.0//EN"
+        "http://castor.exolab.org/mapping.dtd">
+
+<mapping>
+    <description>A mapping file for our Address Book application</description>
+
+    <class name="com.repoc.client.Mozenda10Item">
+        <map-to xml="Item" />
+        <field name="itemId" type="integer"><bind-xml name="ItemID" /></field>
+        <field name="itemId1" type="integer"><bind-xml name="ItemID1" /></field>
+        <field name="locationUrl" type="string"><bind-xml name="LocationUrl" /></field>
+        <field name="name" type="string"><bind-xml name="Name" /></field>
+        <field name="nameOrder" type="string"><bind-xml name="NameOrder" /></field>
+        <field name="fname" type="string"><bind-xml name="FirstName" /></field>
+        <field name="mname" type="string"><bind-xml name="MiddleName" /></field>
+        <field name="lname" type="string"><bind-xml name="LastName" /></field>
+        <field name="position" type="string"><bind-xml name="Position" /></field>
+        <field name="office" type="string"><bind-xml name="Office" /></field>
+        <field name="phone" type="string"><bind-xml name="Phone" /></field>
+        <field name="biography" type="string"><bind-xml name="Biography" /></field>
+        <field name="practiceAreas" type="string"><bind-xml name="PracticeAreas" /></field>
+        <field name="email" type="string"><bind-xml name="Email" /></field>
+        <field name="education" type="string"><bind-xml name="Education" /></field>
+        <field name="jdyear" type="string"><bind-xml name="JDYear" /></field>
+        <field name="lawyerImageUrl" type="string"><bind-xml name="LawyerImageURL" /></field>
+        <field name="address1" type="string"><bind-xml name="Address1" /></field>
+        <field name="address2" type="string"><bind-xml name="Address2" /></field>
+        <field name="city" type="string"><bind-xml name="City" /></field>
+        <field name="state" type="string"><bind-xml name="State" /></field>
+        <field name="zip" type="string"><bind-xml name="Zip" /></field>
+        <field name="officePhone" type="string"><bind-xml name="OfficePhone" /></field>
+        <field name="created" type="string" handler="com.repoc.client.DateFieldHandler"><bind-xml name="Created" /></field>
+        <field name="createdBy" type="string"><bind-xml name="CreatedBy" /></field>
+        <field name="refreshed" type="string" handler="com.repoc.client.DateFieldHandler"><bind-xml name="Refreshed" /></field>
+        <field name="refreshedBy" type="string"><bind-xml name="RefreshedBy" /></field>
+        <field name="modified" type="string" handler="com.repoc.client.DateFieldHandler"><bind-xml name="Modified" /></field>
+        <field name="modifiedBy" type="string"><bind-xml name="ModifiedBy" /></field>
+    </class>
+
+    <class name="com.repoc.client.Mozenda10ItemXML">
+        <map-to xml="ViewGetItemsResponse" />
+        <field name="result" type="string"><bind-xml name="Result" /></field>
+        <field name="pageItemCount" type="integer"><bind-xml name="PageItemCount" /></field>
+        <field name="pageNumber" type="integer"><bind-xml name="PageNumber" /></field>
+        <field name="pageCount" type="integer"><bind-xml name="PageCount" /></field>
+        <field name="itemList" type="com.repoc.client.Mozenda10Item" collection="arraylist" container="false">
+            <bind-xml name="ItemList" node="element"/>
+        </field>
+    </class>
+
+    <class name="com.repoc.client.Mozenda10Collection">
+        <map-to xml="Collection" />
+        <field name="collectionId" type="integer"><bind-xml name="CollectionID" /></field>
+        <field name="name" type="string"><bind-xml name="Name" /></field>
+        <field name="description" type="string"><bind-xml name="Description" /></field>
+        <field name="defaultViewId" type="integer"><bind-xml name="DefaultViewID" /></field>
+        <field name="agentId" type="integer"><bind-xml name="AgentID" /></field>
+    </class>
+
+    <class name="com.repoc.client.Mozenda10CollectionXML">
+        <map-to xml="CollectionGetListResponse" />
+        <field name="result" type="string"><bind-xml name="Result" /></field>
+        <field name="collectionList" type="com.repoc.client.Mozenda10Collection" collection="arraylist" container="false">
+            <bind-xml name="CollectionList" node="element"/>
+        </field>
+    </class>
+
+</mapping>
