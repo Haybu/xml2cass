@@ -36,6 +36,9 @@
         <field name="refreshedBy" type="string"><bind-xml name="RefreshedBy" /></field>
         <field name="modified" type="string" handler="com.repoc.client.DateFieldHandler"><bind-xml name="Modified" /></field>
         <field name="modifiedBy" type="string"><bind-xml name="ModifiedBy" /></field>
+        <field name="itemSourceItemID" type="integer"><bind-xml name="ItemSourceItemID" /></field>
+        <field name="itemSourceName" type="string"><bind-xml name="ItemSourceName" /></field>
+        <field name="itemSourceType" type="string"><bind-xml name="ItemSourceType" /></field>
     </class>
 
     <class name="com.repoc.client.Mozenda10ItemXML">

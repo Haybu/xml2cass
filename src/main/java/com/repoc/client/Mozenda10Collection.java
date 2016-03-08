@@ -15,10 +15,10 @@ import org.springframework.data.cassandra.mapping.Table;
 public class Mozenda10Collection {
 
     @PrimaryKeyColumn(name = "firmId", ordinal = 0, type = PrimaryKeyType.PARTITIONED)
-    private int collectionId;
+    private Integer collectionId;
 
     private String name;
     private String description;
-    private int defaultViewId;
-    private int agentId;
+    private Integer defaultViewId;
+    private Integer agentId;
 }

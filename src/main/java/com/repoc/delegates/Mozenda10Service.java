@@ -23,7 +23,7 @@ public class Mozenda10Service {
     @Autowired
     ProfilesRepository profilesRepository;
 
-    public void retrieveLawyers() throws Exception {
+    public void retrieveLawyers()  {
         Mozenda10CollectionXML collectionXML = client.getCollectionXML();
 
         List<Mozenda10Collection> collections = collectionXML.getCollectionList();
@@ -74,6 +74,26 @@ public class Mozenda10Service {
         buf.append("office: "+ item.getOffice() + "\n");
 
         log.info(buf.toString());
+    }
+
+    public Iterable<Mozenda10Item> getAllLawyers() {
+        return profilesRepository.findAll();
+    }
+
+    public Iterable<Mozenda10Item> getLawyers(Integer firmId) {
+        return profilesRepository.findByFirmId(firmId);
+    }
+
+    public Mozenda10Item getOneLawyer(Integer profileId, Integer firmId)  {
+        return profilesRepository.findByFirmIdAndItemId(profileId, firmId);
+    }
+
+    public Iterable<Mozenda10Collection> getAllFirms() {
+        return firmsRepository.findAll();
+    }
+
+    public Mozenda10Collection getOneFirm(Integer firmId) {
+        return firmsRepository.getOneFirm(firmId);
     }
 
 

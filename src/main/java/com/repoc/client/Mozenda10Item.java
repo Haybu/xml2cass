@@ -17,11 +17,11 @@ import java.util.Date;
 @Data
 public class Mozenda10Item {
 
-    @PrimaryKeyColumn(name = "profileId", ordinal = 0, type = PrimaryKeyType.PARTITIONED)
-    private int itemId;
+    @PrimaryKeyColumn(name = "firmId", ordinal = 0, type = PrimaryKeyType.PARTITIONED)
+    private Integer firmId;
 
-    @PrimaryKeyColumn(name = "firmId", ordinal = 1, type = PrimaryKeyType.CLUSTERED, ordering = Ordering.DESCENDING)
-    private int firmId;
+    @PrimaryKeyColumn(name = "profileId", ordinal = 1, type = PrimaryKeyType.CLUSTERED, ordering = Ordering.DESCENDING)
+    private Integer itemId;
 
     private String locationUrl;
     private String name;
@@ -46,9 +46,12 @@ public class Mozenda10Item {
     private String officePhone;
     private Date created;
     private String createdBy;
-    private int itemId1;
+    private Integer itemId1;
     private Date modified;
     private String modifiedBy;
     private Date refreshed;
     private String refreshedBy;
+    private Integer itemSourceItemID;
+    private String itemSourceName;
+    private String itemSourceType;
 }
