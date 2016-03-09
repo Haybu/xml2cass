@@ -28,19 +28,19 @@ public class Mozenda10Service {
 
         List<Mozenda10Collection> collections = collectionXML.getCollectionList();
 
-        int pageNumber = 1;
+        int pageNumber = 0;
         int pageCount = 0;
         for(Mozenda10Collection collection: collections) {
             log.info("processing collection with view Id: " + collection.getDefaultViewId());
             processCollection(collection);
             do {
-                Mozenda10ItemXML itemsXML = client.getItems(collection.getDefaultViewId(), pageNumber);
+                Mozenda10ItemXML itemsXML = client.getItems(collection.getDefaultViewId(), ++pageNumber);
                 if (itemsXML == null) {
                     continue;
                 }
                 pageNumber = itemsXML.getPageNumber();
                 pageCount = itemsXML.getPageCount();  // always one value
-                if (itemsXML.getItemList() == null || itemsXML.getItemList().size() ==0) {
+                if (itemsXML.getItemList() == null || itemsXML.getItemList().size() == 0) {
                     continue;
                 }
                 itemsXML.getItemList().stream().forEach(item -> {
